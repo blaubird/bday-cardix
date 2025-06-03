@@ -13,23 +13,12 @@
     }
     body {
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 100vw;
+      position: relative;
+      overflow: hidden;
       /* Градиентный фон: от голубого к красному */
       background: linear-gradient(to bottom right, #6DD5FA, #FF6B6B);
       font-family: "Segoe UI", Tahoma, sans-serif;
-    }
-
-    /* -------------------- контейнер “открытки” -------------------- */
-    #card {
-      position: relative;
-      width: 90vw;
-      max-width: 1200px;
-      height: 55vh;
-      max-height: 650px;
-      background: transparent;
-      overflow: hidden;
     }
 
     /* -------------------- подпись в правом нижнем углу -------------------- */
@@ -50,11 +39,14 @@
       position: absolute;
       width: 200px;
       height: 200px;
-      border: 3px solid #222;
       border-radius: 50%;
       cursor: pointer;
       overflow: hidden;
       background: transparent;
+      border: 3px solid #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .circle .photo {
       position: absolute;
@@ -66,7 +58,7 @@
       object-fit: cover;
       display: none;
     }
-    /* Текст внутри кружков: меньший шрифт, без фона */
+    /* Текст внутри кружков: меньший шрифт, по центру */
     .circle .text {
       position: absolute;
       font-size: 12px;
@@ -76,9 +68,13 @@
       padding: 0;
       border-radius: 0;
       display: none;
-      width: 100px;
+      width: 180px;
+      text-align: center;
       white-space: normal;
       word-wrap: break-word;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%);
     }
 
     /* -------------------- звёздочки (stars) -------------------- */
@@ -162,108 +158,104 @@
 </head>
 <body>
 
-  <div id="card">
-    <!-- ==== КРУЖКИ (шесть штук), ближе к границам ==== -->
-    <!-- 1) Слева-сверху -->
-    <div class="circle" id="circle1"
-         style="left: 5%; top: 5%;"
-         data-text="Пусть у тебя в ушах всегда играет самые сладкие лайв записи концертов Ланы!"
-         data-text-x="5%" data-text-y="5%"
-         data-text-final-x="5%" data-text-final-y="0%"
-         data-photo-src="images/photo1.png"
-         data-state="0">
-      <div class="text"></div>
-    </div>
-
-    <!-- 2) Слева-снизу -->
-    <div class="circle" id="circle2"
-         style="left: 5%; top: 55%;"
-         data-text="Желаю тебе такой свободы, чтобы ты никто не смог бы остановить ТЕБЯ!"
-         data-text-x="5%" data-text-y="55%"
-         data-text-final-x="5%" data-text-final-y="65%"
-         data-photo-src="images/photo2.png"
-         data-state="0">
-      <div class="text"></div>
-    </div>
-
-    <!-- 3) Центр-сверху -->
-    <div class="circle" id="circle3"
-         style="left: 37%; top: 5%;"
-         data-text="Пусть твой кошелек будет таким толстым, что при попытке его поднять ты случайно сломаешь руку!"
-         data-text-x="37%" data-text-y="5%"
-         data-text-final-x="37%" data-text-final-y="0%"
-         data-photo-src="images/photo3.png"
-         data-state="0">
-      <div class="text"></div>
-    </div>
-
-    <!-- 4) Центр-снизу -->
-    <div class="circle" id="circle4"
-         style="left: 37%; top:  FiftyFive%;"
-         data-text="Желаю такого порошка, чтобы твоя одежда всегда сияла от чистоты и скорости!"
-         data-text-x="37%" data-text-y="55%"
-         data-text-final-x="37%" data-text-final-y="65%"
-         data-photo-src="images/photo4.png"
-         data-state="0">
-      <div class="text"></div>
-    </div>
-
-    <!-- 5) Справа-сверху -->
-    <div class="circle" id="circle5"
-         style="left: 70%; top: 5%;"
-         data-text="С ДНЁМ РОЖДЕНИЯ МАКСИМКА ВАН ЛАВ!"
-         data-text-x="70%" data-text-y="5%"
-         data-text-final-x="70%" data-text-final-y="0%"
-         data-photo-src="images/photo5.png"
-         data-state="0">
-      <div class="text"></div>
-    </div>
-
-    <!-- 6) Справа-снизу -->
-    <div class="circle" id="circle6"
-         style="left: 70%; top: 55%;"
-         data-text="P.S. НУ И ЕСТЕСТВЕННО ЖЕЛАЮ ПОБОЛЬШЕ СОСИСОК И ВКУСНЫХ ЯИЦ!"
-         data-text-x="70%" data-text-y="55%"
-         data-text-final-x="70%" data-text-final-y="65%"
-         data-photo-src="images/photo6.png"
-         data-state="0">
-      <div class="text"></div>
-    </div>
-
-    <!-- ==== Подпись в правом нижнем углу ==== -->
-    <div id="signature">от: твоего парижского папы</div>
-
-    <!-- ==== ЗВЁЗДЫ (семь шт.) с гиперссылкой на Rick Astley ==== -->
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img src="images/star0.png" alt="Star" class="star small" style="left: 5%; top: 25%;" />
-    </a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img src="images/star1.png" alt="Star" class="star large" style="left: 25%; top: 5%;" />
-    </a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img src="images/star2.png" alt="Star" class="star large" style="left: 45%; top: 5%;" />
-    </a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img src="images/star3.png" alt="Star" class="star large" style="left: 70%; top: 5%;" />
-    </a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img src="images/star4.png" alt="Star" class="star large" style="left: 45%; top: 35%;" />
-    </a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img src="images/star5.png" alt="Star" class="star large" style="left: 45%; top: 75%;" />
-    </a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img src="images/star6.png" alt="Star" class="star small" style="left: 70%; top: 75%;" />
-    </a>
-
-    <!-- ==== ШАРИКИ (четыре штуки) ==== -->
-    <div class="balloon" style="background: #e57373; left: 5%; top: 5%;"></div>
-    <div class="balloon" style="background: #64b5f6; left: 10%; top: 10%;"></div>
-    <div class="balloon" style="background: #81c784; left: 85%; top: 5%;"></div>
-    <div class="balloon" style="background: #ffd54f; left: 88%; top: 10%;"></div>
-
-    <!-- ==== КОНФЕТТИ (динамически создаётся скриптом) ==== -->
+  <!-- ==== КРУЖКИ (шесть штук), расположение точно по макету ==== -->
+  <!-- 1) Верхний левый -->
+  <div class="circle" id="circle1"
+       style="left: 20%; top: 20%;"
+       data-text="Пусть у тебя в ушах всегда играет самые сладкие лайв записи концертов Ланы!"
+       data-text-x="20%" data-text-y="20%"
+       data-text-final-x="20%" data-text-final-y="15%"
+       data-photo-src="images/photo1.png"
+       data-state="0">
+    <div class="text"></div>
   </div>
+
+  <!-- 2) Нижний левый -->
+  <div class="circle" id="circle2"
+       style="left: 25%; top: 50%;"
+       data-text="Желаю тебе такой свободы, чтобы ты никто не смог бы остановить ТЕБЯ!"
+       data-text-x="25%" data-text-y="50%"
+       data-text-final-x="25%" data-text-final-y="60%"
+       data-photo-src="images/photo2.png"
+       data-state="0">
+    <div class="text"></div>
+  </div>
+
+  <!-- 3) Центральный левый -->
+  <div class="circle" id="circle3"
+       style="left: 40%; top: 30%;"
+       data-text="Пусть твой кошелек будет таким толстым, что при попытке его поднять ты случайно сломаешь руку!"
+       data-text-x="40%" data-text-y="30%"
+       data-text-final-x="40%" data-text-final-y="20%"
+       data-photo-src="images/photo3.png"
+       data-state="0">
+    <div class="text"></div>
+  </div>
+
+  <!-- 4) Центральный -->
+  <div class="circle" id="circle4"
+       style="left: 50%; top: 50%;"
+       data-text="Желаю такого порошка, чтобы твоя одежда всегда сияла от чистоты и скорости!"
+       data-text-x="50%" data-text-y="50%"
+       data-text-final-x="50%" data-text-final-y="60%"
+       data-photo-src="images/photo4.png"
+       data-state="0">
+    <div class="text"></div>
+  </div>
+
+  <!-- 5) Верхний правый -->
+  <div class="circle" id="circle5"
+       style="left: 80%; top: 20%;"
+       data-text="С ДНЁМ РОЖДЕНИЯ МАКСИМКА ВАН ЛАВ!"
+       data-text-x="80%" data-text-y="20%"
+       data-text-final-x="80%" data-text-final-y="10%"
+       data-photo-src="images/photo5.png"
+       data-state="0">
+    <div class="text"></div>
+  </div>
+
+  <!-- 6) Нижний правый -->
+  <div class="circle" id="circle6"
+       style="left: 75%; top: 60%;"
+       data-text="P.S. НУ И ЕСТЕСТВЕННО ЖЕЛАЮ ПОБОЛЬШЕ СОСИСОК И ВКУСНЫХ ЯИЦ!"
+       data-text-x="75%" data-text-y="60%"
+       data-text-final-x="75%" data-text-final-y="70%"
+       data-photo-src="images/photo6.png"
+       data-state="0">
+    <div class="text"></div>
+  </div>
+
+  <!-- ==== Подпись в правом нижнем углу ==== -->
+  <div id="signature">от: твоего парижского папы</div>
+
+  <!-- ==== ЗВЁЗДЫ (семь шт.) с гиперссылкой на Rick Astley, расположение ближе к краям ==== -->
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+    <img src="images/star0.png" alt="Star" class="star small" style="left: 5%; top: 40%;" />
+  </a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+    <img src="images/star1.png" alt="Star" class="star large" style="left: 10%; top: 10%;" />
+  </a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+    <img src="images/star2.png" alt="Star" class="star large" style="left: 90%; top: 20%;" />
+  </a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+    <img src="images/star3.png" alt="Star" class="star large" style="left: 95%; top: 10%;" />
+  </a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+    <img src="images/star4.png" alt="Star" class="star large" style="left: 5%; top: 70%;" />
+  </a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+    <img src="images/star5.png" alt="Star" class="star large" style="left: 95%; top: 70%;" />
+  </a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+    <img src="images/star6.png" alt="Star" class="star small" style="left: 95%; top: 40%;" />
+  </a>
+
+  <!-- ==== ШАРИКИ (четыре штуки) ==== -->
+  <div class="balloon" style="background: #e57373; left: 5%; top: 5%;"></div>
+  <div class="balloon" style="background: #64b5f6; left: 10%; top: 10%;"></div>
+  <div class="balloon" style="background: #81c784; left: 85%; top: 5%;"></div>
+  <div class="balloon" style="background: #ffd54f; left: 88%; top: 10%;"></div>
 
   <!-- =========================== СКРИПТ для кликов и анимаций =========================== -->
   <script>
